@@ -1,0 +1,285 @@
+/* ══════════════════════════════════════
+   Hello Kitty & Miguinhos — Stylesheet
+   ══════════════════════════════════════ */
+
+/* ── GOOGLE FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap');
+
+/* ── VARIÁVEIS ── */
+:root {
+  --pink-light: #ffd6e7;
+  --pink-mid:   #ff9ec4;
+  --pink-main:  #ff6fab;
+  --pink-dark:  #e0447a;
+  --white:      #ffffff;
+  --card-bg:    #ffffff;
+  --text:       #7a3050;
+  --radius:     18px;
+}
+
+/* ── RESET ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── BASE ── */
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--pink-light);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ══════════════════════════
+   NAV
+══════════════════════════ */
+nav {
+  background: var(--pink-light);
+  text-align: center;
+  padding: 14px 0 8px;
+}
+
+nav .logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.5rem;
+  color: var(--text);
+  letter-spacing: 1px;
+}
+
+nav .logo span {
+  color: var(--pink-dark);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 6px;
+}
+
+nav ul a {
+  text-decoration: none;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--pink-dark);
+  transition: color .2s;
+}
+
+nav ul a:hover {
+  color: var(--pink-main);
+}
+
+/* ══════════════════════════
+   HERO
+══════════════════════════ */
+.hero {
+  background: linear-gradient(135deg, var(--pink-main) 0%, var(--pink-mid) 100%);
+  text-align: center;
+  padding: 70px 20px 80px;
+}
+
+.hero h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--white);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+}
+
+/* ══════════════════════════
+   LAYOUT DAS SEÇÕES
+══════════════════════════ */
+.sections {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── CARD BASE ── */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 30px 32px;
+  box-shadow: 0 4px 18px rgba(255, 111, 171, .15);
+}
+
+.card h2 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: .9rem;
+  color: #b06080;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════
+   PERSONAGENS
+══════════════════════════ */
+.chars-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.char-pill {
+  background: var(--pink-light);
+  border: 2px solid var(--pink-mid);
+  border-radius: 14px;
+  padding: 10px 18px;
+  min-width: 130px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.char-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(255, 111, 171, .25);
+}
+
+.char-pill strong {
+  display: block;
+  font-size: .85rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.char-pill span {
+  font-size: .75rem;
+  color: #c0607a;
+}
+
+/* ══════════════════════════
+   GALERIA
+══════════════════════════ */
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.gallery-item {
+  width: 110px;
+  height: 110px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--pink-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  border: 2px solid var(--pink-mid);
+  transition: transform .2s;
+  cursor: pointer;
+}
+
+.gallery-item:hover {
+  transform: scale(1.06);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ══════════════════════════
+   FORMULÁRIO
+══════════════════════════ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.form-group input,
+.form-group textarea {
+  border: 1.5px solid var(--pink-mid);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .9rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
+  resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--pink-dark);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #d090b0;
+}
+
+.form-group textarea {
+  min-height: 80px;
+}
+
+.btn-enviar {
+  background: var(--pink-main);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  padding: 13px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .95rem;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: .5px;
+  transition: background .2s, transform .15s;
+}
+
+.btn-enviar:hover {
+  background: var(--pink-dark);
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════
+   FOOTER
+══════════════════════════ */
+footer {
+  background: var(--pink-light);
+  text-align: center;
+  padding: 18px;
+  font-size: .82rem;
+  color: var(--pink-dark);
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+/* ══════════════════════════
+   RESPONSIVO
+══════════════════════════ */
+@media (max-width: 600px) {
+  .chars-grid,
+  .gallery-grid {
+    justify-content: center;
+  }
+
+  .gallery-item {
+    width: 90px;
+    height: 90px;
+  }
+
+  .card {
+    padding: 22px 20px;
+  }
+}
