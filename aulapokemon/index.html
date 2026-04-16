@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PokéAPI - Sua Pokédex Rosa</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                /* Palette Verde */
+                --green: #22c55e;
+                --green-light: #4ade80;
+                --green-dark: #15803d;
+                --emerald: #10b981;
+
+                --bg: linear-gradient(
+                    160deg,
+                    #dcfce7 0%,
+                    #86efac 40%,
+                    #166534 100%
+                );
+
+                --card-bg: rgba(255, 255, 255, 0.65);
+                --card-border: rgba(255, 255, 255, 0.8);
+                --text-dark: #14532d;
+
+                /* Type Colors */
+                --fire: #fb923c;
+                --water: #38bdf8;
+                --grass: #22c55e;
+                --electric: #fbbf24;
+                --poison: #a855f7;
+                --bug: #65a30d;
+                --flying: #93c5fd;
+                --normal: #d1d5db;
+                --ground: #b45309;
+                --rock: #78716c;
+                --fighting: #dc2626;
+                --psychic: #ec4899;
+                --ghost: #7c3aed;
+                --ice: #67e8f9;
+                --dragon: #4f46e5;
+                --dark: #374151;
+                --steel: #94a3b8;
+                --fairy: #fb7185;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: "Nunito", sans-serif;
+                background: var(--bg);
+                background-attachment: fixed;
+                color: var(--text-dark);
+                min-height: 100vh;
+                padding-bottom: 50px;
+            }
+
+            /* ===== 1. BANNER ===== */
+            .banner {
+                width: 100%;
+                padding: 60px 20px 40px;
+                text-align: center;
+                color: white;
+            }
+
+            .banner h1 {
+                font-family: "Press Start 2P", cursive;
+                font-size: clamp(1.5rem, 6vw, 3rem);
+                background: linear-gradient(to bottom, #fff, #fde68a);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+                margin-bottom: 10px;
+            }
+
+            /* ===== 2. CONTROLES ===== */
+            .controls {
+                max-width: 700px;
+                margin: 0 auto 40px;
+                background: rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(12px);
+                padding: 20px;
+                border-radius: 50px;
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+                border: 2px solid rgba(255, 255, 255, 0.4);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .controls input,
+            .controls select {
+                flex: 1;
+                min-width: 150px;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 30px;
+                background: rgba(255, 255, 255, 0.8);
+                font-family: "Nunito", sans-serif;
+                font-weight: 700;
+                color: var(--text-dark);
+                outline: none;
+            }
+
+            .btn-search {
+                padding: 12px 30px;
+                background: linear-gradient(135deg, var(--purple), #ec4899);
+                color: white;
+                border: none;
+                border-radius: 30px;
+                font-weight: 800;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+            }
+
+            .btn-search:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
+            }
+
+            /* ===== 3. GRID DE CARDS ===== */
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .card {
+                background: var(--card-bg);
+                backdrop-filter: blur(10px);
+                border-radius: 24px;
+                padding: 20px;
+                text-align: center;
+                border: 2px solid var(--card-border);
+                transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            }
+
+            .card:hover {
+                transform: translateY(-8px);
+                background: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            }
+
+            .card img {
+                width: 100px;
+                height: 100px;
+                image-rendering: pixelated;
+                filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+            }
+
+            .card .id {
+                display: block;
+                font-weight: 800;
+                color: var(--purple-light);
+                font-size: 0.8rem;
+                margin-bottom: 5px;
+            }
+
+            .card h3 {
+                text-transform: capitalize;
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+                color: var(--text-dark);
+            }
+
+            .types-container {
+                display: flex;
+                justify-content: center;
+                gap: 5px;
+                flex-wrap: wrap;
+            }
+
+            .type-badge {
+                padding: 3px 10px;
+                border-radius: 12px;
+                font-size: 0.65rem;
+                font-weight: 800;
+                color: white;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            /* ===== LOADER ===== */
+            .loader {
+                text-align: center;
+                padding: 40px;
+                font-weight: 800;
+                color: white;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+        </style>
+    </head>
+    <body>
+        <header class="banner">
+            <h1>Pokédex</h1>
+            <p>Aesthetic Pokémon Explorer</p>
+        </header>
+
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Nome ou ID..." />
+            <button class="btn-search" onclick="handleSearch()">Buscar</button>
+            <select id="typeFilter" onchange="handleTypeFilter()">
+                <option value="">Todos os Tipos</option>
+                <option value="fire">Fogo</option>
+                <option value="water">Água</option>
+                <option value="grass">Planta</option>
+                <option value="electric">Elétrico</option>
+                <option value="ice">Gelo</option>
+                <option value="fighting">Lutador</option>
+                <option value="poison">Venenoso</option>
+                <option value="ground">Terra</option>
+                <option value="flying">Voador</option>
+                <option value="psychic">Psíquico</option>
+                <option value="bug">Inseto</option>
+                <option value="rock">Pedra</option>
+                <option value="ghost">Fantasma</option>
+                <option value="dragon">Dragão</option>
+                <option value="dark">Sombrio</option>
+                <option value="steel">Aço</option>
+                <option value="fairy">Fada</option>
+            </select>
+        </div>
+
+        <main>
+            <div id="loader" class="loader">Carregando Pokémons...</div>
+            <div class="grid" id="pokemonGrid"></div>
+        </main>
+
+        <script>
+            const pokemonGrid = document.getElementById("pokemonGrid");
+            const loader = document.getElementById("loader");
+            const searchInput = document.getElementById("searchInput");
+            let loadedPokemons = [];
+
+            // 1. LISTAGEM INICIAL (Carrega 60 para garantir o "mínimo 50")
+            async function fetchPokemons() {
+                try {
+                    const response = await fetch(
+                        "https://pokeapi.co/api/v2/pokemon?limit=60",
+                    );
+                    const data = await response.json();
+
+                    const pokemonDetails = await Promise.all(
+                        data.results.map((pokemon) =>
+                            fetch(pokemon.url).then((res) => res.json()),
+                        ),
+                    );
+
+                    loadedPokemons = pokemonDetails;
+                    renderGrid(loadedPokemons);
+                    loader.style.display = "none";
+                } catch (error) {
+                    loader.innerText = "Erro ao conectar com a PokeAPI.";
+                }
+            }
+
+            // 2. RENDERIZAÇÃO
+            function renderGrid(list) {
+                pokemonGrid.innerHTML = "";
+                list.forEach((pokemon) => {
+                    const card = document.createElement("div");
+                    card.className = "card";
+
+                    const typesHTML = pokemon.types
+                        .map(
+                            (t) =>
+                                `<span class="type-badge" style="background-color: var(--${t.type.name})">${t.type.name}</span>`,
+                        )
+                        .join("");
+
+                    card.innerHTML = `
+          <span class="id">#${String(pokemon.id).padStart(3, "0")}</span>
+          <img src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}">
+          <h3>${pokemon.name}</h3>
+          <div class="types-container">${typesHTML}</div>
+        `;
+                    pokemonGrid.appendChild(card);
+                });
+            }
+
+            // 3. BUSCA (Por Nome ou ID na API)
+            async function handleSearch() {
+                const query = searchInput.value.toLowerCase().trim();
+                if (!query) {
+                    renderGrid(loadedPokemons);
+                    return;
+                }
+
+                loader.style.display = "block";
+                pokemonGrid.innerHTML = "";
+
+                try {
+                    const response = await fetch(
+                        `https://pokeapi.co/api/v2/pokemon/${query}`,
+                    );
+                    if (!response.ok) throw new Error();
+                    const pokemon = await response.json();
+                    renderGrid([pokemon]);
+                    loader.style.display = "none";
+                } catch {
+                    pokemonGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: white;">Pokémon não encontrado! 😭</p>`;
+                    loader.style.display = "none";
+                }
+            }
+
+            // 4. FILTRO POR TIPO
+            function handleTypeFilter() {
+                const selectedType =
+                    document.getElementById("typeFilter").value;
+                if (!selectedType) {
+                    renderGrid(loadedPokemons);
+                    return;
+                }
+                const filtered = loadedPokemons.filter((pokemon) =>
+                    pokemon.types.some((t) => t.type.name === selectedType),
+                );
+                renderGrid(filtered);
+            }
+
+            // Enter na busca
+            searchInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") handleSearch();
+            });
+
+            fetchPokemons();
+        </script>
+    </body>
+</html>
