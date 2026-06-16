@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drama Total Wiki</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+  <div class="header-top">
+    <h1>Drama Total Wiki</h1>
+    <span class="badge">Island</span>
+  </div>
+  <nav>
+    <a href="#personagens">Personagens</a>
+    <a href="#episodios">Episódios</a>
+    <a href="#criadores">Criadores</a>
+  </nav>
+</header>
+
+<!-- ========== MAIN ========== -->
+<main>
+
+  <!-- ===== PERSONAGENS ===== -->
+  <section id="personagens">
+    <h2 class="section-title">Personagens</h2>
+
+    <div class="filtro-times">
+      <button class="btn-filtro ativo" id="btn-todos" onclick="filtrar('todos')">Todos</button>
+      <button class="btn-filtro falcao" id="btn-falcao" onclick="filtrar('falcao')">Falcões Agressivos</button>
+      <button class="btn-filtro gafanhoto" id="btn-gafanhoto" onclick="filtrar('gafanhoto')">Gafanhotos Repugnantes</button>
+    </div>
+
+    <div class="grid-personagens">
+
+      <!-- GWEN -->
+      <article class="card" data-time="gafanhoto">
+        <div class="card-img"><img src="img/Gwen.png" alt="Gwen"></div>
+        <div class="card-body">
+          <h3>Gwen</h3>
+          <span class="tag-time gafanhoto">Gafanhoto</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Finalista — chegou ao final da temporada.</div>
+        </div>
+      </article>
+
+      <!-- OWEN -->
+      <article class="card" data-time="gafanhoto">
+        <div class="card-img"><img src="img/Owen.png" alt="Owen"></div>
+        <div class="card-body">
+          <h3>Owen</h3>
+          <span class="tag-time gafanhoto">Gafanhoto</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Vencedor da 1ª temporada (versão original).</div>
+        </div>
+      </article>
+
+      <!-- HEATHER -->
+      <article class="card" data-time="gafanhoto">
+        <div class="card-img"><img src="img/Heather.png" alt="Heather"></div>
+        <div class="card-body">
+          <h3>Heather</h3>
+          <span class="tag-time gafanhoto">Gafanhoto</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminada no episódio 25 — A Grande Final.</div>
+        </div>
+      </article>
+
+      <!-- DUNCAN -->
+      <article class="card" data-time="falcao">
+        <div class="card-img"><img src="img/Duncan.png" alt="Duncan"></div>
+        <div class="card-body">
+          <h3>Duncan</h3>
+          <span class="tag-time falcao">Falcão</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminado no episódio 24.</div>
+        </div>
+      </article>
+
+      <!-- LESHAWNA -->
+      <article class="card" data-time="gafanhoto">
+        <div class="card-img"><img src="img/LeShawna.png" alt="LeShawna"></div>
+        <div class="card-body">
+          <h3>LeShawna</h3>
+          <span class="tag-time gafanhoto">Gafanhoto</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminada no episódio 23.</div>
+        </div>
+      </article>
+
+      <!-- GEOFF -->
+      <article class="card" data-time="falcao">
+        <div class="card-img"><img src="img/Geoff.png" alt="Geoff"></div>
+        <div class="card-body">
+          <h3>Geoff</h3>
+          <span class="tag-time falcao">Falcão</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminado no episódio 22.</div>
+        </div>
+      </article>
+
+      <!-- BRIDGETTE -->
+      <article class="card" data-time="falcao">
+        <div class="card-img"><img src="img/Bridgette.png" alt="Bridgette"></div>
+        <div class="card-body">
+          <h3>Bridgette</h3>
+          <span class="tag-time falcao">Falcão</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminada no episódio 20.</div>
+        </div>
+      </article>
+
+      <!-- DJ -->
+      <article class="card" data-time="falcao">
+        <div class="card-img"><img src="img/DJ.png" alt="DJ"></div>
+        <div class="card-body">
+          <h3>DJ</h3>
+          <span class="tag-time falcao">Falcão</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminado no episódio 19.</div>
+        </div>
+      </article>
+
+      <!-- IZZY -->
+      <article class="card" data-time="gafanhoto">
+        <div class="card-img"><img src="img/Izzy.png" alt="Izzy"></div>
+        <div class="card-body">
+          <h3>Izzy</h3>
+          <span class="tag-time gafanhoto">Gafanhoto</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminada nos episódios 9 e 17 (voltou uma vez).</div>
+        </div>
+      </article>
+
+      <!-- LINDSEY -->
+      <article class="card" data-time="gafanhoto">
+        <div class="card-img"><img src="img/Lindsay.png" alt="Lindsay"></div>
+        <div class="card-body">
+          <h3>Lindsay</h3>
+          <span class="tag-time gafanhoto">Gafanhoto</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminada no episódio 17.</div>
+        </div>
+      </article>
+
+      <!-- TRENT -->
+      <article class="card" data-time="gafanhoto">
+        <div class="card-img"><img src="img/Trent.png" alt="Trent"></div>
+        <div class="card-body">
+          <h3>Trent</h3>
+          <span class="tag-time gafanhoto">Gafanhoto</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminado no episódio 16.</div>
+        </div>
+      </article>
+
+      <!-- HAROLD -->
+      <article class="card" data-time="gafanhoto">
+        <div class="card-img"><img src="img/Harold.png" alt="Harold"></div>
+        <div class="card-body">
+          <h3>Harold</h3>
+          <span class="tag-time gafanhoto">Gafanhoto</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminado no episódio 15.</div>
+        </div>
+      </article>
+
+      <!-- COURTNEY -->
+      <article class="card" data-time="falcao">
+        <div class="card-img"><img src="img/Courtney.png" alt="Courtney"></div>
+        <div class="card-body">
+          <h3>Courtney</h3>
+          <span class="tag-time falcao">Falcão</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminada no episódio 14.</div>
+        </div>
+      </article>
+
+      <!-- SADIE -->
+      <article class="card" data-time="falcao">
+        <div class="card-img"><img src="img/Sadie.png" alt="Sadie"></div>
+        <div class="card-body">
+          <h3>Sadie</h3>
+          <span class="tag-time falcao">Falcão</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminada no episódio 13.</div>
+        </div>
+      </article>
+
+      <!-- TYLER -->
+      <article class="card" data-time="falcao">
+        <div class="card-img"><img src="img/Tyler.png" alt="Tyler"></div>
+        <div class="card-body">
+          <h3>Tyler</h3>
+          <span class="tag-time falcao">Falcão</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminado no episódio 12.</div>
+        </div>
+      </article>
+
+      <!-- CODY -->
+      <article class="card" data-time="gafanhoto">
+        <div class="card-img"><img src="img/Cody.png" alt="Cody"></div>
+        <div class="card-body">
+          <h3>Cody</h3>
+          <span class="tag-time gafanhoto">Gafanhoto</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminado no episódio 10.</div>
+        </div>
+      </article>
+
+      <!-- BETH -->
+      <article class="card" data-time="falcao">
+        <div class="card-img"><img src="img/Beth.png" alt="Beth"></div>
+        <div class="card-body">
+          <h3>Beth</h3>
+          <span class="tag-time falcao">Falcão</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminada no episódio 8.</div>
+        </div>
+      </article>
+
+      <!-- KATIE -->
+      <article class="card" data-time="falcao">
+        <div class="card-img"><img src="img/Katie.png" alt="Katie"></div>
+        <div class="card-body">
+          <h3>Katie</h3>
+          <span class="tag-time falcao">Falcão</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminada no episódio 7.</div>
+        </div>
+      </article>
+
+      <!-- NOAH -->
+      <article class="card" data-time="gafanhoto">
+        <div class="card-img"><img src="img/Noah.png" alt="Noah"></div>
+        <div class="card-body">
+          <h3>Noah</h3>
+          <span class="tag-time gafanhoto">Gafanhoto</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminado no episódio 6.</div>
+        </div>
+      </article>
+
+      <!-- EVA -->
+      <article class="card" data-time="falcao">
+        <div class="card-img"><img src="img/Eva.png" alt="Eva"></div>
+        <div class="card-body">
+          <h3>Eva</h3>
+          <span class="tag-time falcao">Falcão</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminada nos episódios 5 e 18 (voltou uma vez).</div>
+        </div>
+      </article>
+
+      <!-- JUSTIN -->
+      <article class="card" data-time="gafanhoto">
+        <div class="card-img"><img src="img/Justin.png" alt="Justin"></div>
+        <div class="card-body">
+          <h3>Justin</h3>
+          <span class="tag-time gafanhoto">Gafanhoto</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">Eliminado no episódio 4.</div>
+        </div>
+      </article>
+
+      <!-- EZEKIEL -->
+      <article class="card" data-time="falcao">
+        <div class="card-img"><img src="img/Ezekiel.png" alt="Ezekiel"></div>
+        <div class="card-body">
+          <h3>Ezekiel</h3>
+          <span class="tag-time falcao">Falcão</span>
+          <button class="btn-spoiler" onclick="toggleSpoiler(this)">Ver destino</button>
+          <div class="spoiler-info">1º eliminado — episódio 2.</div>
+        </div>
+      </article>
+
+    </div><!-- fim grid-personagens -->
+  </section>
+
+  <!-- ===== EPISÓDIOS ===== -->
+  <section id="episodios">
+    <h2 class="section-title">Episódios — 1ª Temporada</h2>
+    <div class="tabela-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Eliminado(s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">1</td>
+            <td>Não Ouvi Falar no Campo?</td>
+            <td>Os 22 participantes chegam à Ilha Wawanakwa e conhecem o apresentador Chris. Nenhuma eliminação.</td>
+            <td class="eliminado">—</td>
+          </tr>
+          <tr>
+            <td class="num">2</td>
+            <td>O Campeão do Mergulho</td>
+            <td>O desafio envolve mergulhar de um penhasco em água com tubarões. Primeiro voto do jogo.</td>
+            <td class="eliminado">Ezekiel</td>
+          </tr>
+          <tr>
+            <td class="num">3</td>
+            <td>A Corrida ao Tesouro Assustador</td>
+            <td>Os times devem completar uma caça ao tesouro aterrorizante pela floresta à noite.</td>
+            <td class="eliminado">Harold (não, Eva)</td>
+          </tr>
+          <tr>
+            <td class="num">4</td>
+            <td>Não Tão Feliz Acampando</td>
+            <td>Competição culinária onde os times preparam refeições para os juízes.</td>
+            <td class="eliminado">Justin</td>
+          </tr>
+          <tr>
+            <td class="num">5</td>
+            <td>O Prazer É Nosso</td>
+            <td>Desafio com animais selvagens e obstáculos em plena floresta.</td>
+            <td class="eliminado">Eva</td>
+          </tr>
+          <tr>
+            <td class="num">6</td>
+            <td>Os Reis do Reality</td>
+            <td>Os participantes passam por desafios inspirados em reality shows clássicos.</td>
+            <td class="eliminado">Noah</td>
+          </tr>
+          <tr>
+            <td class="num">7</td>
+            <td>Perdidos e Confusos</td>
+            <td>Os times ficam perdidos na floresta e precisam construir abrigos para sobreviver.</td>
+            <td class="eliminado">Katie</td>
+          </tr>
+          <tr>
+            <td class="num">8</td>
+            <td>O Caminho do Guerreiro</td>
+            <td>Desafio de artes marciais e combate entre os participantes.</td>
+            <td class="eliminado">Beth</td>
+          </tr>
+          <tr>
+            <td class="num">9</td>
+            <td>Correndo para a Vitória</td>
+            <td>Uma corrida de obstáculos intensa pela ilha coloca os dois times à prova.</td>
+            <td class="eliminado">Izzy</td>
+          </tr>
+          <tr>
+            <td class="num">10</td>
+            <td>Desastres Naturais</td>
+            <td>Os participantes enfrentam desafios simulando catástrofes naturais.</td>
+            <td class="eliminado">Cody</td>
+          </tr>
+          <tr>
+            <td class="num">11</td>
+            <td>Medo de Dançar</td>
+            <td>Competição de dança onde os times apresentam coreografias para Chris.</td>
+            <td class="eliminado">—</td>
+          </tr>
+          <tr>
+            <td class="num">12</td>
+            <td>A Pressão da Fama</td>
+            <td>Desafio de resistência onde os participantes precisam aguentar situações humilhantes.</td>
+            <td class="eliminado">Tyler</td>
+          </tr>
+          <tr>
+            <td class="num">13</td>
+            <td>Agora É Individual</td>
+            <td>Os times são dissolvidos e começa a fase individual do jogo.</td>
+            <td class="eliminado">Sadie</td>
+          </tr>
+          <tr>
+            <td class="num">14</td>
+            <td>O Clube da Luta</td>
+            <td>Desafio físico intenso com boxe e combate individual entre os participantes.</td>
+            <td class="eliminado">Courtney</td>
+          </tr>
+          <tr>
+            <td class="num">15</td>
+            <td>O Grande Nerd</td>
+            <td>Desafio de conhecimentos gerais e habilidades acadêmicas.</td>
+            <td class="eliminado">Harold</td>
+          </tr>
+          <tr>
+            <td class="num">16</td>
+            <td>Em Alta</td>
+            <td>Competição musical onde os participantes formam bandas e se apresentam.</td>
+            <td class="eliminado">Trent</td>
+          </tr>
+          <tr>
+            <td class="num">17</td>
+            <td>Dor de Cabeça</td>
+            <td>Desafio de resistência ao sol com atividades físicas extenuantes.</td>
+            <td class="eliminado">Lindsay, Izzy, Eva</td>
+          </tr>
+          <tr>
+            <td class="num">18</td>
+            <td>Volta da Eva</td>
+            <td>Eva retorna ao jogo por um episódio, mas é eliminada novamente.</td>
+            <td class="eliminado">Eva</td>
+          </tr>
+          <tr>
+            <td class="num">19</td>
+            <td>O Adeus do DJ</td>
+            <td>Desafio de culinária selvagem onde os participantes cozinham criaturas da floresta.</td>
+            <td class="eliminado">DJ</td>
+          </tr>
+          <tr>
+            <td class="num">20</td>
+            <td>Adeus, Bridgette</td>
+            <td>Desafio de sobrevivência que coloca à prova os limites físicos dos competidores.</td>
+            <td class="eliminado">Bridgette</td>
+          </tr>
+          <tr>
+            <td class="num">21</td>
+            <td>O Triângulo Amoroso</td>
+            <td>Tensões românticas e intrigas dominam enquanto o desafio envolve teatro e atuação.</td>
+            <td class="eliminado">—</td>
+          </tr>
+          <tr>
+            <td class="num">22</td>
+            <td>Até Mais, Geoff</td>
+            <td>Desafio de habilidade manual e construção. Geoff é eliminado pela aliança adversária.</td>
+            <td class="eliminado">Geoff</td>
+          </tr>
+          <tr>
+            <td class="num">23</td>
+            <td>A Rainha Foi</td>
+            <td>Desafio de resistência e estratégia que resulta na eliminação da LeShawna.</td>
+            <td class="eliminado">LeShawna</td>
+          </tr>
+          <tr>
+            <td class="num">24</td>
+            <td>O Penúltimo Desafio</td>
+            <td>Semifinal intensa onde Duncan é eliminado, deixando apenas Gwen, Owen e Heather.</td>
+            <td class="eliminado">Duncan</td>
+          </tr>
+          <tr>
+            <td class="num">25</td>
+            <td>A Grande Final</td>
+            <td>A grande final entre Gwen e Owen (com Heather eliminada no caminho). O vencedor leva $100.000.</td>
+            <td class="eliminado">Heather (finalista)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== CRIADORES ===== -->
+  <section id="criadores">
+    <h2 class="section-title">Criadores</h2>
+
+    <div class="criadores-grid">
+
+      <div class="criador-card">
+        <h3>Tom McGillis</h3>
+        <p class="cargo">Criador & Produtor Executivo</p>
+        <p>
+          Tom McGillis é um roteirista e produtor canadense, co-criador de <em>Drama Total</em> ao lado de Jennifer Pertsch. É um dos grandes nomes da animação canadense para o público jovem.
+        </p>
+        <ul>
+          <li>Co-criador de <em>Total Drama Island</em> (2007)</li>
+          <li>Produtor executivo de todas as temporadas</li>
+          <li>Fundador do estúdio Fresh TV</li>
+          <li>Também criou <em>6teen</em> e <em>Stoked</em></li>
+        </ul>
+      </div>
+
+      <div class="criador-card">
+        <h3>Jennifer Pertsch</h3>
+        <p class="cargo">Criadora & Produtora Executiva</p>
+        <p>
+          Jennifer Pertsch é roteirista e produtora canadense, parceira de Tom McGillis na criação do universo Drama Total. Juntos fundaram a Fresh TV, responsável pela produção da série.
+        </p>
+        <ul>
+          <li>Co-criadora de <em>Total Drama Island</em> (2007)</li>
+          <li>Roteirista principal nas primeiras temporadas</li>
+          <li>Co-fundadora da Fresh TV Inc.</li>
+          <li>Envolvida em toda a franquia Drama Total</li>
+        </ul>
+      </div>
+
+      <div class="criador-card">
+        <h3>Fresh TV Inc.</h3>
+        <p class="cargo">Estúdio de Produção</p>
+        <p>
+          A Fresh TV é a produtora canadense responsável pela animação de Drama Total. A série foi exibida originalmente no canal Teletoon (Canadá) e Cartoon Network (EUA).
+        </p>
+        <ol>
+          <li>Fundada por McGillis e Pertsch</li>
+          <li>1ª temporada estreou em 2007</li>
+          <li>Parceria com Teletoon e Cartoon Network</li>
+          <li>Produção de 6 temporadas ao total</li>
+        </ol>
+        <a href="https://www.freshtv.com" target="_blank">Site oficial Fresh TV →</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <h2>Drama Total Wiki</h2>
+  <p>Pagina desenvolvida por Aryann Gabriel</p>
+  <p>Conteúdo referente à <span class="destaque">1ª Temporada</span> — Total Drama Island (2007)</p>
+  <div class="footer-links">
+    <a href="https://www.freshtv.com" target="_blank">Fresh TV</a>
+    <a href="#personagens">↑ Voltar ao topo</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
