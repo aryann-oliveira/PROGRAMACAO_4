@@ -1,0 +1,485 @@
+/* ===== FONTE CUSTOMIZADA ===== */
+@font-face {
+  font-family: 'Samdan';
+  src: url('fonts/Samdan.ttf') format('truetype');
+}
+
+/* ===== VARIÁVEIS ===== */
+:root {
+  --verde: #2d6a2d;
+  --verde-escuro: #1a3d1a;
+  --amarelo: #f5c518;
+  --cinza: #555;
+  --fundo: #f5f5f5;
+  --black: #222;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--fundo);
+  color: #222;
+}
+
+h1, h2, h3 { font-family: Arial, sans-serif; }
+
+/* ===== HEADER ===== */
+header {
+  background-color: #c0392b;
+  padding: 16px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.header-top h1 {
+  font-family: 'Samdan', Arial, sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: black;
+  -webkit-text-stroke: 1px white;
+}
+
+.header-top .badge {
+  background: black;
+  color: white;
+  font-family: 'Samdan', Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+nav a {
+  color: var(--black);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 6px 16px;
+  border: 1px solid var(--black);
+  border-radius: 4px;
+  background-color: white;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+nav a:hover {
+  background-color: var(--amarelo);
+  color: black;
+  border-color: var(--amarelo);
+}
+
+/* ===== MAIN ===== */
+main { max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; }
+
+/* ===== TÍTULOS DE SEÇÃO ===== */
+.section-title {
+  font-size: 1.8rem;
+  color: var(--verde-escuro);
+  border-bottom: 3px solid var(--amarelo);
+  padding-bottom: 6px;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+/* ===== SEÇÃO PERSONAGENS ===== */
+#personagens { margin-bottom: 60px; }
+
+.filtro-times {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.btn-filtro {
+  font-size: 0.95rem;
+  padding: 6px 18px;
+  border: 2px solid var(--verde);
+  border-radius: 4px;
+  background: white;
+  color: var(--verde-escuro);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-filtro:hover, .btn-filtro.ativo {
+  background-color: var(--verde);
+  color: white;
+}
+
+.btn-filtro.falcao.ativo  { background-color: #c0392b; border-color: #c0392b; }
+.btn-filtro.gafanhoto.ativo { background-color: #2471a3; border-color: #2471a3; }
+
+/* grid de personagens */
+.grid-personagens {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+/* card de personagem */
+article.card {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img {
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-body h3 {
+  font-size: 1.1rem;
+  color: var(--verde-escuro);
+}
+
+.tag-time {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: white;
+  width: fit-content;
+}
+
+.tag-time.falcao    { background-color: #c0392b; }
+.tag-time.gafanhoto { background-color: #2471a3; }
+.tag-time.finalista { background-color: var(--verde); }
+
+.btn-spoiler {
+  margin-top: auto;
+  font-size: 0.82rem;
+  font-weight: bold;
+  background-color: var(--amarelo);
+  color: var(--verde-escuro);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.btn-spoiler:hover { background-color: #c9a200; }
+
+.spoiler-info {
+  display: none;
+  font-size: 0.8rem;
+  color: var(--cinza);
+  background: #fffde7;
+  border-left: 3px solid var(--amarelo);
+  padding: 6px 10px;
+  margin-top: 4px;
+}
+
+.spoiler-info.visivel { display: block; }
+
+/* ===== SEÇÃO EPISÓDIOS ===== */
+#episodios { margin-bottom: 60px; }
+
+.tabela-wrapper { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+}
+
+thead {
+  background-color: var(--verde-escuro);
+  color: var(--amarelo);
+}
+
+thead th { padding: 12px 14px; text-align: left; }
+
+tbody tr { border-bottom: 1px solid #ddd; }
+
+tbody tr:hover { background-color: #fffde7; }
+
+tbody td { padding: 10px 14px; vertical-align: top; }
+
+td.num {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--verde);
+  width: 50px;
+}
+
+td.eliminado { color: #c0392b; font-weight: bold; }
+
+/* ===== SEÇÃO CRIADORES ===== */
+#criadores { margin-bottom: 60px; }
+
+.criadores-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.criador-card {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 24px;
+  flex: 1;
+  min-width: 260px;
+}
+
+.criador-card h3 {
+  font-size: 1.3rem;
+  color: var(--verde-escuro);
+  margin-bottom: 4px;
+}
+
+.criador-card .cargo {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--cinza);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.criador-card p { color: var(--cinza); line-height: 1.6; margin-bottom: 10px; }
+
+.criador-card ul,
+.criador-card ol { padding-left: 18px; color: var(--cinza); }
+.criador-card li { margin-bottom: 4px; }
+
+.criador-card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--verde);
+  font-weight: bold;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.criador-card a:hover { color: #c9a200; }
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: var(--verde-escuro);
+  color: #cde8cd;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+footer h2 {
+  font-family: 'Samdan', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 1000;
+  color: black;
+  -webkit-text-stroke: 1px white;
+}
+
+footer .footer-links {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+footer .footer-links a {
+  color: #cde8cd;
+  transition: color 0.2s;
+}
+
+footer .footer-links a:hover { color: var(--amarelo); }
+
+/* ===== HIDDEN (filtro) ===== */
+.card.oculto { display: none; }
+/* ===== INTEGRAÇÃO COM API: AUTENTICAÇÃO ===== */
+.auth-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  padding: 8px 0 4px;
+  font-size: 0.9rem;
+}
+
+.btn-auth {
+  background-color: var(--amarelo, #f1c40f);
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-auth:hover { opacity: 0.85; }
+
+.oculto { display: none !important; }
+
+.status-msg {
+  text-align: center;
+  padding: 16px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* ---- Modal de login ---- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #fff;
+  color: #222;
+  border-radius: 10px;
+  padding: 28px;
+  width: 90%;
+  max-width: 360px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-box h2 { margin-top: 0; }
+.modal-sub { font-size: 0.85rem; opacity: 0.75; margin-bottom: 16px; }
+
+.modal-fechar {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+#form-login label,
+.admin-box label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+#form-login input,
+.admin-box input,
+.admin-box select,
+.admin-box textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.modal-acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.btn-auth-primario {
+  background-color: var(--verde, #27ae60);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-auth-secundario {
+  background: none;
+  border: 1px solid #999;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.auth-erro {
+  color: #c0392b;
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
+.modal-dica {
+  margin-top: 14px;
+  font-size: 0.75rem;
+  opacity: 0.65;
+}
+
+/* ---- Formulário de administração (CRUD) ---- */
+.admin-box {
+  max-width: 480px;
+  margin: 28px auto 0;
+  padding: 20px;
+  border: 2px dashed var(--amarelo, #f1c40f);
+  border-radius: 10px;
+}
+
+.admin-box h3 { margin-top: 0; }
+
+/* ---- Ações de edição/exclusão nos cards ---- */
+.card-admin-acoes {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.card-admin-acoes button {
+  flex: 1;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-editar { background-color: #2980b9; color: #fff; }
+.btn-excluir { background-color: #c0392b; color: #fff; }

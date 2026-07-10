@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drama Total Wiki</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+  <div class="header-top">
+    <h1>Drama Total Wiki</h1>
+    <span class="badge">Island</span>
+  </div>
+  <nav>
+    <a href="#personagens">Personagens</a>
+    <a href="#episodios">Episódios</a>
+    <a href="#criadores">Criadores</a>
+  </nav>
+  <div class="auth-area" id="auth-area">
+    <span id="auth-status">Não autenticado</span>
+    <button id="btn-abrir-login" class="btn-auth">Entrar</button>
+    <button id="btn-logout" class="btn-auth" style="display:none;">Sair</button>
+  </div>
+</header>
+
+<!-- ========== MODAL DE LOGIN / CADASTRO ========== -->
+<div id="modal-login" class="modal-overlay oculto">
+  <div class="modal-box">
+    <button class="modal-fechar" id="btn-fechar-modal">×</button>
+    <h2>Acessar a Wiki</h2>
+    <p class="modal-sub">Faça login para carregar, criar e editar os personagens (API protegida por JWT).</p>
+
+    <form id="form-login">
+      <label for="login-username">Usuário</label>
+      <input type="text" id="login-username" required autocomplete="username" />
+
+      <label for="login-password">Senha</label>
+      <input type="password" id="login-password" required autocomplete="current-password" />
+
+      <div class="modal-acoes">
+        <button type="submit" class="btn-auth-primario">Entrar</button>
+        <button type="button" id="btn-ir-cadastro" class="btn-auth-secundario">Criar conta</button>
+      </div>
+    </form>
+
+    <p id="login-erro" class="auth-erro oculto"></p>
+    <p class="modal-dica">Usuário de teste (após rodar o seed): <strong>admin</strong> / <strong>admin123</strong></p>
+  </div>
+</div>
+
+<!-- ========== MAIN ========== -->
+<main>
+
+  <!-- ===== PERSONAGENS ===== -->
+  <section id="personagens">
+    <h2 class="section-title">Personagens</h2>
+
+    <div class="filtro-times">
+      <button class="btn-filtro ativo" id="btn-todos">Todos</button>
+      <button class="btn-filtro falcao" id="btn-falcao">Falcões Agressivos</button>
+      <button class="btn-filtro gafanhoto" id="btn-gafanhoto">Gafanhotos Repugnantes</button>
+    </div>
+
+    <div id="personagens-status" class="status-msg">Faça login para carregar os personagens da API.</div>
+
+    <div class="grid-personagens" id="grid-personagens"></div>
+
+    <div id="admin-personagem" class="admin-box oculto">
+      <h3 id="admin-titulo">Adicionar personagem</h3>
+      <form id="form-personagem">
+        <input type="hidden" id="personagem-id" value="" />
+
+        <label for="personagem-nome">Nome</label>
+        <input type="text" id="personagem-nome" required />
+
+        <label for="personagem-imagem">Imagem (caminho, ex: img/Gwen.png)</label>
+        <input type="text" id="personagem-imagem" required />
+
+        <label for="personagem-time">Time</label>
+        <select id="personagem-time">
+          <option value="falcao">Falcão</option>
+          <option value="gafanhoto">Gafanhoto</option>
+        </select>
+
+        <label for="personagem-ordem">Ordem de apresentação</label>
+        <input type="number" id="personagem-ordem" min="0" />
+
+        <label for="personagem-destino">Destino / spoiler</label>
+        <textarea id="personagem-destino" rows="2" required></textarea>
+
+        <div class="modal-acoes">
+          <button type="submit" class="btn-auth-primario">Salvar</button>
+          <button type="button" id="btn-cancelar-edicao" class="btn-auth-secundario oculto">Cancelar edição</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== EPISÓDIOS ===== -->
+  <section id="episodios">
+    <h2 class="section-title">Episódios — 1ª Temporada</h2>
+    <div class="tabela-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Eliminado(s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">1</td>
+            <td>Não Ouvi Falar no Campo?</td>
+            <td>Os 22 participantes chegam à Ilha Wawanakwa e conhecem o apresentador Chris. Nenhuma eliminação.</td>
+            <td class="eliminado">—</td>
+          </tr>
+          <tr>
+            <td class="num">2</td>
+            <td>O Campeão do Mergulho</td>
+            <td>O desafio envolve mergulhar de um penhasco em água com tubarões. Primeiro voto do jogo.</td>
+            <td class="eliminado">Ezekiel</td>
+          </tr>
+          <tr>
+            <td class="num">3</td>
+            <td>A Corrida ao Tesouro Assustador</td>
+            <td>Os times devem completar uma caça ao tesouro aterrorizante pela floresta à noite.</td>
+            <td class="eliminado">Harold (não, Eva)</td>
+          </tr>
+          <tr>
+            <td class="num">4</td>
+            <td>Não Tão Feliz Acampando</td>
+            <td>Competição culinária onde os times preparam refeições para os juízes.</td>
+            <td class="eliminado">Justin</td>
+          </tr>
+          <tr>
+            <td class="num">5</td>
+            <td>O Prazer É Nosso</td>
+            <td>Desafio com animais selvagens e obstáculos em plena floresta.</td>
+            <td class="eliminado">Eva</td>
+          </tr>
+          <tr>
+            <td class="num">6</td>
+            <td>Os Reis do Reality</td>
+            <td>Os participantes passam por desafios inspirados em reality shows clássicos.</td>
+            <td class="eliminado">Noah</td>
+          </tr>
+          <tr>
+            <td class="num">7</td>
+            <td>Perdidos e Confusos</td>
+            <td>Os times ficam perdidos na floresta e precisam construir abrigos para sobreviver.</td>
+            <td class="eliminado">Katie</td>
+          </tr>
+          <tr>
+            <td class="num">8</td>
+            <td>O Caminho do Guerreiro</td>
+            <td>Desafio de artes marciais e combate entre os participantes.</td>
+            <td class="eliminado">Beth</td>
+          </tr>
+          <tr>
+            <td class="num">9</td>
+            <td>Correndo para a Vitória</td>
+            <td>Uma corrida de obstáculos intensa pela ilha coloca os dois times à prova.</td>
+            <td class="eliminado">Izzy</td>
+          </tr>
+          <tr>
+            <td class="num">10</td>
+            <td>Desastres Naturais</td>
+            <td>Os participantes enfrentam desafios simulando catástrofes naturais.</td>
+            <td class="eliminado">Cody</td>
+          </tr>
+          <tr>
+            <td class="num">11</td>
+            <td>Medo de Dançar</td>
+            <td>Competição de dança onde os times apresentam coreografias para Chris.</td>
+            <td class="eliminado">—</td>
+          </tr>
+          <tr>
+            <td class="num">12</td>
+            <td>A Pressão da Fama</td>
+            <td>Desafio de resistência onde os participantes precisam aguentar situações humilhantes.</td>
+            <td class="eliminado">Tyler</td>
+          </tr>
+          <tr>
+            <td class="num">13</td>
+            <td>Agora É Individual</td>
+            <td>Os times são dissolvidos e começa a fase individual do jogo.</td>
+            <td class="eliminado">Sadie</td>
+          </tr>
+          <tr>
+            <td class="num">14</td>
+            <td>O Clube da Luta</td>
+            <td>Desafio físico intenso com boxe e combate individual entre os participantes.</td>
+            <td class="eliminado">Courtney</td>
+          </tr>
+          <tr>
+            <td class="num">15</td>
+            <td>O Grande Nerd</td>
+            <td>Desafio de conhecimentos gerais e habilidades acadêmicas.</td>
+            <td class="eliminado">Harold</td>
+          </tr>
+          <tr>
+            <td class="num">16</td>
+            <td>Em Alta</td>
+            <td>Competição musical onde os participantes formam bandas e se apresentam.</td>
+            <td class="eliminado">Trent</td>
+          </tr>
+          <tr>
+            <td class="num">17</td>
+            <td>Dor de Cabeça</td>
+            <td>Desafio de resistência ao sol com atividades físicas extenuantes.</td>
+            <td class="eliminado">Lindsay, Izzy, Eva</td>
+          </tr>
+          <tr>
+            <td class="num">18</td>
+            <td>Volta da Eva</td>
+            <td>Eva retorna ao jogo por um episódio, mas é eliminada novamente.</td>
+            <td class="eliminado">Eva</td>
+          </tr>
+          <tr>
+            <td class="num">19</td>
+            <td>O Adeus do DJ</td>
+            <td>Desafio de culinária selvagem onde os participantes cozinham criaturas da floresta.</td>
+            <td class="eliminado">DJ</td>
+          </tr>
+          <tr>
+            <td class="num">20</td>
+            <td>Adeus, Bridgette</td>
+            <td>Desafio de sobrevivência que coloca à prova os limites físicos dos competidores.</td>
+            <td class="eliminado">Bridgette</td>
+          </tr>
+          <tr>
+            <td class="num">21</td>
+            <td>O Triângulo Amoroso</td>
+            <td>Tensões românticas e intrigas dominam enquanto o desafio envolve teatro e atuação.</td>
+            <td class="eliminado">—</td>
+          </tr>
+          <tr>
+            <td class="num">22</td>
+            <td>Até Mais, Geoff</td>
+            <td>Desafio de habilidade manual e construção. Geoff é eliminado pela aliança adversária.</td>
+            <td class="eliminado">Geoff</td>
+          </tr>
+          <tr>
+            <td class="num">23</td>
+            <td>A Rainha Foi</td>
+            <td>Desafio de resistência e estratégia que resulta na eliminação da LeShawna.</td>
+            <td class="eliminado">LeShawna</td>
+          </tr>
+          <tr>
+            <td class="num">24</td>
+            <td>O Penúltimo Desafio</td>
+            <td>Semifinal intensa onde Duncan é eliminado, deixando apenas Gwen, Owen e Heather.</td>
+            <td class="eliminado">Duncan</td>
+          </tr>
+          <tr>
+            <td class="num">25</td>
+            <td>A Grande Final</td>
+            <td>A grande final entre Gwen e Owen (com Heather eliminada no caminho). O vencedor leva $100.000.</td>
+            <td class="eliminado">Heather (finalista)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== CRIADORES ===== -->
+  <section id="criadores">
+    <h2 class="section-title">Criadores</h2>
+
+    <div class="criadores-grid">
+
+      <div class="criador-card">
+        <h3>Tom McGillis</h3>
+        <p class="cargo">Criador & Produtor Executivo</p>
+        <p>
+          Tom McGillis é um roteirista e produtor canadense, co-criador de <em>Drama Total</em> ao lado de Jennifer Pertsch. É um dos grandes nomes da animação canadense para o público jovem.
+        </p>
+        <ul>
+          <li>Co-criador de <em>Total Drama Island</em> (2007)</li>
+          <li>Produtor executivo de todas as temporadas</li>
+          <li>Fundador do estúdio Fresh TV</li>
+          <li>Também criou <em>6teen</em> e <em>Stoked</em></li>
+        </ul>
+      </div>
+
+      <div class="criador-card">
+        <h3>Jennifer Pertsch</h3>
+        <p class="cargo">Criadora & Produtora Executiva</p>
+        <p>
+          Jennifer Pertsch é roteirista e produtora canadense, parceira de Tom McGillis na criação do universo Drama Total. Juntos fundaram a Fresh TV, responsável pela produção da série.
+        </p>
+        <ul>
+          <li>Co-criadora de <em>Total Drama Island</em> (2007)</li>
+          <li>Roteirista principal nas primeiras temporadas</li>
+          <li>Co-fundadora da Fresh TV Inc.</li>
+          <li>Envolvida em toda a franquia Drama Total</li>
+        </ul>
+      </div>
+
+      <div class="criador-card">
+        <h3>Fresh TV Inc.</h3>
+        <p class="cargo">Estúdio de Produção</p>
+        <p>
+          A Fresh TV é a produtora canadense responsável pela animação de Drama Total. A série foi exibida originalmente no canal Teletoon (Canadá) e Cartoon Network (EUA).
+        </p>
+        <ol>
+          <li>Fundada por McGillis e Pertsch</li>
+          <li>1ª temporada estreou em 2007</li>
+          <li>Parceria com Teletoon e Cartoon Network</li>
+          <li>Produção de 6 temporadas ao total</li>
+        </ol>
+        <a href="https://www.freshtv.com" target="_blank">Site oficial Fresh TV →</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <h2>Drama Total Wiki</h2>
+  <p>Pagina desenvolvida por Aryann Gabriel</p>
+  <p>Conteúdo referente à <span class="destaque">1ª Temporada</span> — Total Drama Island (2007)</p>
+  <div class="footer-links">
+    <a href="https://www.freshtv.com" target="_blank">Fresh TV</a>
+    <a href="#personagens">↑ Voltar ao topo</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
